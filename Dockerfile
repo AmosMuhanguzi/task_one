@@ -1,11 +1,16 @@
-FROM python:3.8-slim-buster
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim
 
+# Set the working directory in the container
 WORKDIR /app
 
-COPY app.py /app/
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-RUN pip install Flask
+# No dependencies in this case, so no requirements.txt needed
 
+# Make port 5000 available to the world outside this container
 EXPOSE 5000
 
+# Run app.py when the container launches
 CMD ["python", "app.py"]
